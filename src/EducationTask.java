@@ -1,10 +1,9 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class EducationTask
+class EducationTask
 {
 	
 	
@@ -30,15 +29,18 @@ public class EducationTask
 			foundationDate.setTime(sdf.parse(fndD));
 		}
 		
-		public static void PrintInst(Institution[] institutions)
+		static void PrintInst(Institution[] institutions)
 		{
+			int i =1;
 			for (Institution institution: institutions)
 			{
+				System.out.print(i+ ". ");
 				System.out.println(institution.ToString());
+				i++;
 			}
 		}
 		
-		public static void OrderByYear(Institution[] institutions)
+		static void OrderByYear(Institution[] institutions)
 		{
 			int len = institutions.length;
 			for (int i = 0; i<len; i++)
@@ -52,8 +54,9 @@ public class EducationTask
 						institutions[j+1] = temp;
 					}
 				}
-				PrintInst(institutions);
+				
 			}
+			PrintInst(institutions);
 		}
 		
 		public String ToString()
@@ -77,8 +80,8 @@ public class EducationTask
 		School() throws ParseException
 		{
 			super();
-			studentsAmount = 0;
-			number = 0;
+			studentsAmount = null;
+			number = null;
 		}
 		
 		School(String str_name, String str_addr, String fndD, Integer stdAm, Integer num) throws ParseException
@@ -93,7 +96,7 @@ public class EducationTask
 			return studentsAmount;
 		}
 		
-		public static void LeastStudents(Institution[] institutions) throws ParseException
+		static void LeastStudents(Institution[] institutions) throws ParseException
 		{
 			School result = new School();
 			
@@ -102,7 +105,7 @@ public class EducationTask
 				if (institution instanceof School)
 				{
 					School curr = (School) institution;
-					if (result.studentsAmount > curr.studentsAmount)
+					if (result.studentsAmount==null||result.studentsAmount > curr.studentsAmount)
 					{
 						result = curr;
 					}
@@ -119,8 +122,8 @@ public class EducationTask
 			result += this.name + " "
 					+ this.address + " "
 					+ sdf.format(this.foundationDate.getTime()) + " "
-					+ studentsAmount.toString() + " "
-					+ number.toString() + " ";
+					+ studentsAmount + " "
+					+ number + " ";
 			return result;
 		}
 	}
@@ -149,7 +152,7 @@ public class EducationTask
 			return accreditation;
 		}
 		
-		public static void GetAllOfAccLevel(Institution[] institutions, int accLevel)
+		static void GetAllOfAccLevel(Institution[] institutions, int accLevel)
 		{
 			for (Institution institution : institutions)
 			{
@@ -158,7 +161,7 @@ public class EducationTask
 					University curr = (University) institution;
 					if (curr.accreditation == accLevel)
 					{
-						System.out.print(curr.ToString() + ", ");
+						System.out.println(curr.ToString() + ";");
 					}
 				}
 			}
@@ -172,8 +175,8 @@ public class EducationTask
 			result += this.name + " "
 					+ this.address + " "
 					+ sdf.format(this.foundationDate.getTime()) + " "
-					+ accreditation.toString() + " "
-					+ facultiesAmount.toString() + " ";
+					+ accreditation + " "
+					+ facultiesAmount + " ";
 			return result;
 		}
 	}
