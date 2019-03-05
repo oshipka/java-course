@@ -54,7 +54,6 @@ class EducationTask
 						institutions[j+1] = temp;
 					}
 				}
-				
 			}
 			PrintInst(institutions);
 		}
@@ -111,9 +110,10 @@ class EducationTask
 					}
 				}
 			}
-			System.out.println(result.ToString());
+			System.out                                                                      String());
 		}
 	
+		@SuppressWarnings("Duplicates")
 		public String ToString()
 		{
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy", Locale.ENGLISH);
@@ -167,6 +167,7 @@ class EducationTask
 			}
 		}
 		
+		@SuppressWarnings("Duplicates")
 		public String ToString()
 		{
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy", Locale.ENGLISH);

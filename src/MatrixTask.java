@@ -4,22 +4,21 @@ class MatrixTask
 {
     private int[][] matrix = new int[][]{
             new int[]{1, 2, 3},
-            new int[]{4, 5, 6},
+            new int[]{0, -1, 0},
             new int[]{7, 8, 9},
             new int[]{10, 11, 12},
-            new int[]{13, 14, 15},
+            new int[]{13, 113, 15},
     };
     private int m = 5;
     private int n = 3;
     private int[] result = new int[m];
     
-    MatrixTask()
-    {
-    }
+    MatrixTask() {}
     
     private int CountSum(int element)
     {
         int result = 0;
+        element = Math.abs(element);
         while (element != 0)
         {
             result += element % 10;
