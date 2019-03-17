@@ -27,11 +27,17 @@ public class Strofoida {
         for ( double x = minX; x<maxX; x+= 0.05)
         {
             double _y;
-            _y = Math.sqrt(Math.pow(x, 2)*((a+x)/(a-x)));
+            double toSqrt = Math.pow(x, 2)*((a+x)/(a-x));
+            if (toSqrt<0)
+            {
+                continue;
+            }
+            else {
+            _y = Math.sqrt(toSqrt);
             points.add(new Point(x, _y));
             points.add(new Point(x, -1*_y));
             y = Math.max(y, Math.max(_y, -1*_y));
-        }
+        }}
     }
 
     public ArrayList<Point> GetPoints(){
