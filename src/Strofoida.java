@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Strofoida {
@@ -7,16 +6,7 @@ public class Strofoida {
     public double maxX;
     double y;
     ArrayList<Point> points;
-
-    Strofoida()
-    {
-        a=0;
-        minX = 0;
-        maxX = 0;
-        y = 0;
-        points = new ArrayList<Point>();
-    }
-
+    
     Strofoida(double _a, double _minX, double _maxX)
     {
         a = _a;
@@ -32,6 +22,7 @@ public class Strofoida {
             {
                 continue;
             }
+            
             else {
             _y = Math.sqrt(toSqrt);
             points.add(new Point(x, _y));

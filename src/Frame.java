@@ -11,19 +11,22 @@ import java.util.Random;
 
 import static java.awt.BasicStroke.*;
 
-public class Plot extends JFrame implements MouseListener, ComponentListener {
-Color color;
-Stroke str;
-Random rd = new Random();
-	JPanel canvas;
-
+public class Frame extends JFrame implements ComponentListener {
+private Color color;
+private Stroke str;
+private Random rd = new Random();
+	private JPanel canvas;
+	
+	private int prevWidth;
+	private int prevHeight;
+	
 	private double zoom = 20;
-	Plot(double a, double minX, double maxX) {
+	Frame(double a, double minX, double maxX) {
 		super("Строфоїда");
 
 		Strofoida strofoida = new Strofoida(a, minX, maxX);
 		int width =(int) (strofoida.deltaX()*zoom*2);
-		int height =(int) (strofoida.deltaY()*zoom*4);
+		int height =(int) (strofoida.deltaY()*zoom);
 
 		getContentPane().addComponentListener(this);
 
@@ -31,15 +34,34 @@ Random rd = new Random();
 
 		Container drawable = getContentPane();
 		str = new BasicStroke(2f);
-		canvas = new GraphCanvas(strofoida, width, height, color, str, this);
+		canvas = new Canvas(strofoida, width, height, color, str, this);
 		drawable.add(canvas);
 		setSize(width, height);
 	}
 	@Override
 	public void componentResized(ComponentEvent e) {
-
+		
+		double longerDelta = getDelta(this.getWidth(), (prevWidth*1.0), this.getHeight(), (prevHeight*1.0));
+		
+		zoom *= longerDelta;
+		System.out.println("Zoom: " + zoom);
+		
+		prevHeight = this.getHeight();
+		prevWidth = this.getWidth();
+		
 	}
-
+	
+	private double getDelta(int width, double v, int height, double v1)
+	{
+		double longer = Math.max(Math.abs(width-v), Math.abs(height-v1));
+		if (longer == Math.abs(width-v))
+		{
+			return width/v;
+		}
+		else
+			return height/v1;
+	}
+	
 	@Override
 	public void componentMoved(ComponentEvent e) {
 
@@ -55,48 +77,13 @@ Random rd = new Random();
 
 	}
 	
-	@Override
-	public void mouseClicked(MouseEvent e)
-	{
-		//canvas.invalidate();
-		//this.repaint();
-		//GraphCanvas.draw();
-	}
-	
-	@Override
-	public void mousePressed(MouseEvent e)
-	{
-	
-	}
-	
-	
-	@Override
-	public void mouseReleased(MouseEvent e)
-	{
-	
-	}
-	
-	@Override
-	public void mouseEntered(MouseEvent e)
-	{
-	
-	}
-	
-	@Override
-	public void mouseExited(MouseEvent e)
-	{
-	
-	}
-	
-	public class GraphCanvas extends JPanel {
+	public class Canvas extends JPanel {
 		private Strofoida strofoida;
 		Stroke stroke;
 		Color color;
-        
-        int prevWidth;
-        int prevHeight;
+  
 		
-		GraphCanvas(Strofoida _strofoida, int _width, int _height, Color _c, Stroke _s, final JFrame parent) {
+		Canvas(Strofoida _strofoida, int _width, int _height, Color _c, Stroke _s, final JFrame parent) {
 			super();
 			strofoida = _strofoida;
 			this.setSize(_width, _height);
@@ -126,7 +113,7 @@ Random rd = new Random();
 				private Stroke swapStroke()
 				{
 					int[] caps = new int[]{CAP_BUTT, CAP_ROUND,	CAP_SQUARE};
-					int[] joins = new int[]{CAP_BUTT, CAP_ROUND, CAP_SQUARE};
+					int[] joins = new int[]{JOIN_BEVEL, JOIN_MITER, JOIN_ROUND};
 					
 					int size = 1+ rd.nextInt(5);
 					float[] dash = new float[size];
@@ -211,7 +198,6 @@ Random rd = new Random();
 			g2d.setColor(this.color);
 			g2d.setStroke(this.stroke);
 			
-			zoom = getZoom();
 			
 			//draw plot
 			for (int i = 0; i < points.size() - 2; i++)
@@ -227,33 +213,10 @@ Random rd = new Random();
 				g2d.draw(new Line2D.Double(p1, p2));
 			}
 			g2d.setColor(Color.BLACK);
+			g2d.setFont(new Font("Calibri", Font.PLAIN, 20));
 			g2d.drawString("Шипка Олена. Варіант 9", 10, 20);
 		}
         
-        private double getZoom()
-        {
-            double res = zoom;
-            
-            double longerDelta = getDelta(this.getWidth(), (prevWidth*1.0), this.getHeight(), (prevHeight*1.0));
-
-            res *= longerDelta;
-            System.out.println("Zoom: " + zoom);
-            
-            prevHeight = this.getHeight();
-            prevWidth = this.getWidth();
-            
-            return res;
-        }
-        
-        private double getDelta(int width, double v, int height, double v1)
-        {
-            double longer = Math.max(Math.abs(width-v), Math.abs(height-v1));
-            if (longer == Math.abs(width-v))
-            {
-                return width/v;
-            }
-            else
-                return height/v1;
-        }
+    
     }
 }
