@@ -1,27 +1,37 @@
+import com.sun.org.apache.bcel.internal.generic.ObjectType;
+
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class Frame extends JFrame implements ComponentListener {
 	private int prevWidth;
 	private int prevHeight;
 	
-	JMenu menu;
-	JMenuItem i1, i2, i3;
+	private JMenu menu;
+	private JMenuItem i1, i2, i3;
 	
-	MyTable table;
+	private MyTable table;
 	
-	Container contentPane = getContentPane();
+	private Container contentPane = getContentPane();
 	
-	private double zoom = 20;
+	//private double zoom = 20;
 	
 	Frame() {
 		super("Строфоїда");
@@ -31,50 +41,27 @@ public class Frame extends JFrame implements ComponentListener {
 		
 		
 		createMenu();
+		table = new MyTable(contentPane);
 		createToolbar();
-//		createTable();
+		createStatusBar();
 		
-		new MyTable(contentPane);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setSize(500, 570);
 	}
 	
-	private void createTable() {
-		String data[][] = {{"101", "Amit", "670000"},
-				{"102", "Jai", "780000"},
-				{"101", "Sachin", "700000"}};
-		String column[] = {"ID", "NAME", "SALARY"};
-		final JTable jt = new JTable(data, column);
-		jt.setCellSelectionEnabled(true);
-		ListSelectionModel select = jt.getSelectionModel();
-		select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		select.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				String Data = null;
-				int[] row = jt.getSelectedRows();
-				int[] columns = jt.getSelectedColumns();
-				for (int i = 0; i < row.length; i++) {
-					for (int j = 0; j < columns.length; j++) {
-						Data = (String) jt.getValueAt(row[i], columns[j]);
-					}
-				}
-			}
-		});
-		JScrollPane sp = new JScrollPane(jt);
-		this.contentPane.add(sp, BorderLayout.CENTER);
-	}
 	
 	private void createMenu() {
 		JMenuBar mb = new JMenuBar();
 		menu = new JMenu("File");
 		i1 = new JMenuItem(new AbstractAction("New") {
 			public void actionPerformed(ActionEvent ae) {
-				table.model.setRowCount(0);
+				table.model.setRowCount(1);
+				table.model.setColumnCount(1);
 				
 				for (int i = 0; i < 5; i++) {
-					table.model.addColumn(i);
+					table.model.addColumn(table.table.getColumnCount());
 				}
 				for (int i = 0; i < 10; i++) {
 					table.model.addRow(new Object[]{i});
@@ -128,6 +115,9 @@ public class Frame extends JFrame implements ComponentListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("copied");
+				StringSelection selection = new StringSelection(table.currSelectedContent());
+				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+				clipboard.setContents(selection, selection);
 			}
 		});
 		tb.add(b1);
@@ -136,7 +126,19 @@ public class Frame extends JFrame implements ComponentListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				try {
 				System.out.println("pasted");
+				
+				int row = table.getSelectedRow();
+				int column = table.getSelectedColumn();
+				
+				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+					table.table.setValueAt(clipboard.getData(DataFlavor.stringFlavor), row, column);
+				} catch (UnsupportedFlavorException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		tb.add(b2);
@@ -146,6 +148,14 @@ public class Frame extends JFrame implements ComponentListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("cut");
+				
+				StringSelection selection = new StringSelection(table.currSelectedContent());
+				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+				clipboard.setContents(selection, selection);
+				
+				int row = table.getSelectedRow();
+				int column = table.getSelectedColumn();
+				table.table.setValueAt("", row, column);
 			}
 		});
 		tb.add(b3);
@@ -184,6 +194,10 @@ public class Frame extends JFrame implements ComponentListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("subtract row");
+				int last_row = table.table.getRowCount() - 1;
+				if (last_row != 0) {
+					table.model.removeRow(last_row);
+				}
 			}
 		});
 		tb.add(b7);
@@ -193,6 +207,7 @@ public class Frame extends JFrame implements ComponentListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("add row");
+				table.model.addRow(new Object[]{table.table.getRowCount()});
 			}
 		});
 		tb.add(b8);
@@ -202,6 +217,11 @@ public class Frame extends JFrame implements ComponentListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("subtract column");
+				
+				int last_col = table.table.getColumnCount() - 1;
+				if (last_col != 0) {
+					table.model.setColumnCount(last_col);
+				}
 			}
 		});
 		tb.add(b9);
@@ -211,36 +231,33 @@ public class Frame extends JFrame implements ComponentListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				System.out.println("add column");
+				int last_col = table.table.getColumnCount();
+				table.model.addColumn(last_col);
 			}
 		});
 		tb.add(b10);
 		this.contentPane.add(tb, BorderLayout.NORTH);
-		JTextArea textArea = new JTextArea();
-		JScrollPane pane = new JScrollPane(textArea);
-		contentPane.add(pane, BorderLayout.CENTER);
 	}
 	
+	private void createStatusBar() {
+		JPanel statusBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		statusBar.setBorder(new CompoundBorder(new LineBorder(Color.DARK_GRAY),
+											   new EmptyBorder(4, 4, 4, 4)
+		));
+		final JLabel status = new JLabel();
+		statusBar.add(status);
+		
+		add(statusBar, BorderLayout.SOUTH);
+		table.table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				status.setText("row:" + table.table.getSelectedRow() + "column: " + table.table.getSelectedColumn());
+			}
+		});
+	}
 	
 	@Override
 	public void componentResized(ComponentEvent e) {
-		
-		double longerDelta = getDelta(this.getWidth(), (prevWidth * 1.0), this.getHeight(), (prevHeight * 1.0));
-		
-		zoom *= longerDelta;
-		System.out.println("Zoom: " + zoom);
-		
-		prevHeight = this.getHeight();
-		prevWidth = this.getWidth();
-		
-	}
-	
-	private double getDelta(int width, double v, int height, double v1) {
-		double longer = Math.max(Math.abs(width - v), Math.abs(height - v1));
-		if (longer == Math.abs(width - v)) {
-			return width / v;
-		} else {
-			return height / v1;
-		}
 	}
 	
 	@Override
@@ -259,7 +276,7 @@ public class Frame extends JFrame implements ComponentListener {
 	}
 	
 	
-	class MyTable extends  JTable{
+	class MyTable extends JTable {
 		
 		JScrollPane sp;
 		JTable table = new JTable();
@@ -267,12 +284,12 @@ public class Frame extends JFrame implements ComponentListener {
 		TextField tf = new TextField();
 		
 		MyTable(Container container) {
-			setLayout(new BorderLayout());
+			
 			model = (DefaultTableModel) table.getModel();
 			
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 			for (int i = 0; i < 5; i++) {
-				model.addColumn(i);
+				model.addColumn(table.getColumnCount());
 			}
 			for (int i = 0; i < 10; i++) {
 				model.addRow(new Object[]{i});
@@ -282,14 +299,7 @@ public class Frame extends JFrame implements ComponentListener {
 			sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 			
 			JPanel jp = new JPanel();
-			
-			//sp.setSize(500, 500);
-			tf.setSize(450, 7);
-			//jp.add(tf, Gr.NORTH);
-			//jp.add(sp, BorderLayout.CENTER);
-			//sp.add(tf, BorderLayout.NORTH);
-			//sp.setOpaque(true);
-			//container.add(table, BorderLayout.CENTER);
+			jp.setLayout(new BorderLayout());
 			jp.add(tf, BorderLayout.NORTH);
 			jp.add(sp, BorderLayout.CENTER);
 			container.add(jp, BorderLayout.CENTER);
@@ -301,8 +311,10 @@ public class Frame extends JFrame implements ComponentListener {
 			});
 		}
 		
-		public String currSelected() {
-			return "";
+		public String currSelectedContent() {
+			int row = table.getSelectedRow();
+			int column = table.getSelectedColumn();
+			return (String) table.getValueAt(row, column);
 		}
 	}
 	

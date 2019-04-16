@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48bdf5a2-4d3c-4de5-a6f6-94092c1a6881" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/TableCellListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/task-2.1/META-INF/task-2.1.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Strofoida.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,13 +24,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1529" />
+          <entry key="java" value="1957" />
           <entry key="md" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1529" />
+          <entry key="JAVA" value="1957" />
           <entry key="Markdown" value="13" />
         </counts>
       </usages-collector>
@@ -66,14 +60,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+            <state relative-caret-position="2348">
+              <caret line="261" column="4" lean-forward="true" selection-start-line="261" selection-start-column="4" selection-end-line="261" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#createTable#0;class#Frame#0" />
-                <element signature="e#1212#1570#0" expanded="true" />
-                <element signature="e#1569#1570#0" expanded="true" />
-                <element signature="method#createToolbar#0;class#Frame#0" />
                 <element signature="e#2555#2686#0" expanded="true" />
                 <element signature="e#2685#2686#0" expanded="true" />
                 <element signature="e#2763#2894#0" expanded="true" />
@@ -86,23 +76,22 @@
                 <element signature="e#3543#3544#0" expanded="true" />
                 <element signature="e#3617#3757#0" expanded="true" />
                 <element signature="e#3756#3757#0" expanded="true" />
-                <element signature="e#3852#3989#0" expanded="true" />
-                <element signature="e#3988#3989#0" expanded="true" />
-                <element signature="e#4063#4195#0" expanded="true" />
-                <element signature="e#4194#4195#0" expanded="true" />
-                <element signature="e#4269#4409#0" expanded="true" />
-                <element signature="e#4408#4409#0" expanded="true" />
-                <element signature="e#4485#4620#0" expanded="true" />
-                <element signature="e#4619#4620#0" expanded="true" />
-                <element signature="method#componentResized#0;class#Frame#0" />
-                <element signature="method#getDelta#0;class#Frame#0" />
+                <element signature="e#4685#4941#0" expanded="true" />
+                <element signature="e#4940#4941#0" expanded="true" />
+                <element signature="e#5054#5251#0" expanded="true" />
+                <element signature="e#5250#5251#0" expanded="true" />
+                <element signature="e#5325#5465#0" expanded="true" />
+                <element signature="e#5464#5465#0" expanded="true" />
+                <element signature="e#5670#5867#0" expanded="true" />
+                <element signature="e#5866#5867#0" expanded="true" />
+                <element signature="method#createStatusBar#0;class#Frame#0" />
+                <element signature="e#6626#6782#0" expanded="true" />
+                <element signature="e#6781#6782#0" expanded="true" />
                 <element signature="method#componentMoved#0;class#Frame#0" />
                 <element signature="method#componentShown#0;class#Frame#0" />
                 <element signature="method#componentHidden#0;class#Frame#0" />
-                <element signature="e#7404#7540#0" expanded="true" />
-                <element signature="e#7539#7540#0" expanded="true" />
-                <element signature="e#7581#7582#0" expanded="true" />
-                <element signature="e#7599#7600#0" expanded="true" />
+                <element signature="e#7765#7901#0" expanded="true" />
+                <element signature="e#7900#7901#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,7 +124,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="220">
-                <caret line="11" selection-start-line="11" selection-end-line="11" />
+                <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
               </first_editor>
               <second_editor />
             </state>
@@ -222,7 +211,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555412980093" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555420426775" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
@@ -268,7 +257,7 @@
       <workItem from="1552852701986" duration="7829000" />
       <workItem from="1552929341001" duration="8594000" />
       <workItem from="1553001225332" duration="2951000" />
-      <workItem from="1555184109882" duration="22745000" />
+      <workItem from="1555184109882" duration="28216000" />
     </task>
     <task id="LOCAL-00001" summary="completed the task">
       <created>1552943534194</created>
@@ -281,7 +270,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48907000" />
+    <option name="totallyTimeSpent" value="54378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="1" width="1103" height="1086" extended-state="0" />
@@ -296,7 +285,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49922118" visible="true" weight="0.32983193" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49922118" visible="true" weight="0.29411766" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4779412" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -306,7 +295,7 @@
       <window_info anchor="bottom" id="RNConsole" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32843652" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3277311" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24972856" />
@@ -368,21 +357,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Frame.java</url>
-          <line>36</line>
+          <line>195</line>
           <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>5</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Frame.java</url>
-          <line>69</line>
-          <properties />
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -432,23 +409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="220">
-            <caret line="11" selection-start-line="11" selection-end-line="11" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TableCellListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -469,16 +429,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="220">
+            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+        <state relative-caret-position="2348">
+          <caret line="261" column="4" lean-forward="true" selection-start-line="261" selection-start-column="4" selection-end-line="261" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTable#0;class#Frame#0" />
-            <element signature="e#1212#1570#0" expanded="true" />
-            <element signature="e#1569#1570#0" expanded="true" />
-            <element signature="method#createToolbar#0;class#Frame#0" />
             <element signature="e#2555#2686#0" expanded="true" />
             <element signature="e#2685#2686#0" expanded="true" />
             <element signature="e#2763#2894#0" expanded="true" />
@@ -491,23 +464,22 @@
             <element signature="e#3543#3544#0" expanded="true" />
             <element signature="e#3617#3757#0" expanded="true" />
             <element signature="e#3756#3757#0" expanded="true" />
-            <element signature="e#3852#3989#0" expanded="true" />
-            <element signature="e#3988#3989#0" expanded="true" />
-            <element signature="e#4063#4195#0" expanded="true" />
-            <element signature="e#4194#4195#0" expanded="true" />
-            <element signature="e#4269#4409#0" expanded="true" />
-            <element signature="e#4408#4409#0" expanded="true" />
-            <element signature="e#4485#4620#0" expanded="true" />
-            <element signature="e#4619#4620#0" expanded="true" />
-            <element signature="method#componentResized#0;class#Frame#0" />
-            <element signature="method#getDelta#0;class#Frame#0" />
+            <element signature="e#4685#4941#0" expanded="true" />
+            <element signature="e#4940#4941#0" expanded="true" />
+            <element signature="e#5054#5251#0" expanded="true" />
+            <element signature="e#5250#5251#0" expanded="true" />
+            <element signature="e#5325#5465#0" expanded="true" />
+            <element signature="e#5464#5465#0" expanded="true" />
+            <element signature="e#5670#5867#0" expanded="true" />
+            <element signature="e#5866#5867#0" expanded="true" />
+            <element signature="method#createStatusBar#0;class#Frame#0" />
+            <element signature="e#6626#6782#0" expanded="true" />
+            <element signature="e#6781#6782#0" expanded="true" />
             <element signature="method#componentMoved#0;class#Frame#0" />
             <element signature="method#componentShown#0;class#Frame#0" />
             <element signature="method#componentHidden#0;class#Frame#0" />
-            <element signature="e#7404#7540#0" expanded="true" />
-            <element signature="e#7539#7540#0" expanded="true" />
-            <element signature="e#7581#7582#0" expanded="true" />
-            <element signature="e#7599#7600#0" expanded="true" />
+            <element signature="e#7765#7901#0" expanded="true" />
+            <element signature="e#7900#7901#0" expanded="true" />
           </folding>
         </state>
       </provider>
