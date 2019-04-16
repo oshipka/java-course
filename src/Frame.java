@@ -1,47 +1,230 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
-import java.util.Random;
-
-import static java.awt.BasicStroke.*;
+import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 public class Frame extends JFrame implements ComponentListener {
-private Color color;
-private Stroke str;
-private Random rd = new Random();
-	private JPanel canvas;
-	
 	private int prevWidth;
 	private int prevHeight;
 	
+	JMenu menu;
+	JMenuItem i1, i2, i3;
+	
+	MyTable table;
+	
+	Container contentPane = getContentPane();
+	
 	private double zoom = 20;
-	Frame(double a, double minX, double maxX) {
+	
+	Frame() {
 		super("Строфоїда");
-
-		Strofoida strofoida = new Strofoida(a, minX, maxX);
-		int width =(int) (strofoida.deltaX()*zoom*2);
-		int height =(int) (strofoida.deltaY()*zoom);
-
-		getContentPane().addComponentListener(this);
-
+		
+		
+		contentPane.addComponentListener(this);
+		
+		
+		createMenu();
+		createToolbar();
+//		createTable();
+		
+		new MyTable(contentPane);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		Container drawable = getContentPane();
-		str = new BasicStroke(2f);
-		canvas = new Canvas(strofoida, width, height, color, str, this);
-		drawable.add(canvas);
-		setSize(width, height);
+		
+		setSize(500, 570);
 	}
+	
+	private void createTable() {
+		String data[][] = {{"101", "Amit", "670000"},
+				{"102", "Jai", "780000"},
+				{"101", "Sachin", "700000"}};
+		String column[] = {"ID", "NAME", "SALARY"};
+		final JTable jt = new JTable(data, column);
+		jt.setCellSelectionEnabled(true);
+		ListSelectionModel select = jt.getSelectionModel();
+		select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		select.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				String Data = null;
+				int[] row = jt.getSelectedRows();
+				int[] columns = jt.getSelectedColumns();
+				for (int i = 0; i < row.length; i++) {
+					for (int j = 0; j < columns.length; j++) {
+						Data = (String) jt.getValueAt(row[i], columns[j]);
+					}
+				}
+			}
+		});
+		JScrollPane sp = new JScrollPane(jt);
+		this.contentPane.add(sp, BorderLayout.CENTER);
+	}
+	
+	private void createMenu() {
+		JMenuBar mb = new JMenuBar();
+		menu = new JMenu("File");
+		i1 = new JMenuItem(new AbstractAction("New") {
+			public void actionPerformed(ActionEvent ae) {
+				table.model.setRowCount(0);
+				
+				for (int i = 0; i < 5; i++) {
+					table.model.addColumn(i);
+				}
+				for (int i = 0; i < 10; i++) {
+					table.model.addRow(new Object[]{i});
+				}
+			}
+		});
+		i1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		i2 = new JMenuItem(new AbstractAction("Save") {
+			public void actionPerformed(ActionEvent ae) {
+			
+			}
+		});
+		i2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		i3 = new JMenuItem(new AbstractAction("Open") {
+			public void actionPerformed(ActionEvent ae) {
+				JFileChooser fc = new JFileChooser();
+				int i = fc.showOpenDialog(contentPane);
+				if (i == JFileChooser.APPROVE_OPTION) {
+					File f = fc.getSelectedFile();
+					String filepath = f.getPath();
+					try {
+						BufferedReader br = new BufferedReader(new FileReader(filepath));
+						String s1 = "", s2 = "";
+						while ((s1 = br.readLine()) != null) {
+							s2 += s1 + "\n";
+						}
+						System.out.println(s2);
+						br.close();
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+				
+			}
+		});
+		i3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
+		menu.add(i1);
+		menu.add(i2);
+		menu.add(i3);
+		mb.add(menu);
+		this.setJMenuBar(mb);
+		this.setVisible(true);
+	}
+	
+	private void createToolbar() {
+		JToolBar tb = new JToolBar();
+		tb.setRollover(true);
+		JButton b1 = new JButton("copy");
+		b1.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("copied");
+			}
+		});
+		tb.add(b1);
+		JButton b2 = new JButton("paste");
+		b2.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("pasted");
+			}
+		});
+		tb.add(b2);
+		JButton b3 = new JButton("cut");
+		b3.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("cut");
+			}
+		});
+		tb.add(b3);
+		tb.addSeparator();
+		JButton b4 = new JButton("L");
+		b4.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("alignment left");
+			}
+		});
+		tb.add(b4);
+		JButton b5 = new JButton("M");
+		b5.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("alignment middle");
+			}
+		});
+		tb.add(b5);
+		JButton b6 = new JButton("R");
+		b6.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("alignment right");
+			}
+		});
+		tb.add(b6);
+		tb.addSeparator();
+		JButton b7 = new JButton("R-");
+		b7.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("subtract row");
+			}
+		});
+		tb.add(b7);
+		JButton b8 = new JButton("R+");
+		b8.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("add row");
+			}
+		});
+		tb.add(b8);
+		JButton b9 = new JButton("C-");
+		b9.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("subtract column");
+			}
+		});
+		tb.add(b9);
+		JButton b10 = new JButton("C+");
+		b10.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("add column");
+			}
+		});
+		tb.add(b10);
+		this.contentPane.add(tb, BorderLayout.NORTH);
+		JTextArea textArea = new JTextArea();
+		JScrollPane pane = new JScrollPane(textArea);
+		contentPane.add(pane, BorderLayout.CENTER);
+	}
+	
+	
 	@Override
 	public void componentResized(ComponentEvent e) {
 		
-		double longerDelta = getDelta(this.getWidth(), (prevWidth*1.0), this.getHeight(), (prevHeight*1.0));
+		double longerDelta = getDelta(this.getWidth(), (prevWidth * 1.0), this.getHeight(), (prevHeight * 1.0));
 		
 		zoom *= longerDelta;
 		System.out.println("Zoom: " + zoom);
@@ -51,172 +234,76 @@ private Random rd = new Random();
 		
 	}
 	
-	private double getDelta(int width, double v, int height, double v1)
-	{
-		double longer = Math.max(Math.abs(width-v), Math.abs(height-v1));
-		if (longer == Math.abs(width-v))
-		{
-			return width/v;
+	private double getDelta(int width, double v, int height, double v1) {
+		double longer = Math.max(Math.abs(width - v), Math.abs(height - v1));
+		if (longer == Math.abs(width - v)) {
+			return width / v;
+		} else {
+			return height / v1;
 		}
-		else
-			return height/v1;
 	}
 	
 	@Override
 	public void componentMoved(ComponentEvent e) {
-
-	}
-
-	@Override
-	public void componentShown(ComponentEvent e) {
-
-	}
-
-	@Override
-	public void componentHidden(ComponentEvent e) {
-
+	
 	}
 	
-	public class Canvas extends JPanel {
-		private Strofoida strofoida;
-		Stroke stroke;
-		Color color;
-  
+	@Override
+	public void componentShown(ComponentEvent e) {
+	
+	}
+	
+	@Override
+	public void componentHidden(ComponentEvent e) {
+	
+	}
+	
+	
+	class MyTable extends  JTable{
 		
-		Canvas(Strofoida _strofoida, int _width, int _height, Color _c, Stroke _s, final JFrame parent) {
-			super();
-			strofoida = _strofoida;
-			this.setSize(_width, _height);
-			stroke = _s;
-			color = _c;
-			prevHeight = _height;
-			prevWidth = _width;
-			this.addMouseListener(new MouseListener() {
+		JScrollPane sp;
+		JTable table = new JTable();
+		DefaultTableModel model;
+		TextField tf = new TextField();
+		
+		MyTable(Container container) {
+			setLayout(new BorderLayout());
+			model = (DefaultTableModel) table.getModel();
+			
+			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+			for (int i = 0; i < 5; i++) {
+				model.addColumn(i);
+			}
+			for (int i = 0; i < 10; i++) {
+				model.addRow(new Object[]{i});
+			}
+			sp = new JScrollPane(table);
+			sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			
+			JPanel jp = new JPanel();
+			
+			//sp.setSize(500, 500);
+			tf.setSize(450, 7);
+			//jp.add(tf, Gr.NORTH);
+			//jp.add(sp, BorderLayout.CENTER);
+			//sp.add(tf, BorderLayout.NORTH);
+			//sp.setOpaque(true);
+			//container.add(table, BorderLayout.CENTER);
+			jp.add(tf, BorderLayout.NORTH);
+			jp.add(sp, BorderLayout.CENTER);
+			container.add(jp, BorderLayout.CENTER);
+			new TableCellListener(table, new AbstractAction() {
 				@Override
-				public void mouseClicked(MouseEvent e)
-				{
-					SwingUtilities.updateComponentTreeUI(parent);
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e)
-				{
-					color = swapColor();
-				}
-				
-				@Override
-				public void mouseReleased(MouseEvent e)
-				{
-					stroke = swapStroke();
-				}
-				
-				private Stroke swapStroke()
-				{
-					int[] caps = new int[]{CAP_BUTT, CAP_ROUND,	CAP_SQUARE};
-					int[] joins = new int[]{JOIN_BEVEL, JOIN_MITER, JOIN_ROUND};
-					
-					int size = 1+ rd.nextInt(5);
-					float[] dash = new float[size];
-					for (int i = 0; i< size; i++)
-					{
-						dash[i] = 1 + rd.nextFloat();
-					}
-					
-					return new BasicStroke(
-							rd.nextInt(10)+rd.nextFloat(),
-							caps[rd.nextInt(caps.length)],
-							joins[rd.nextInt(joins.length)],
-							1 + rd.nextFloat() * 4,
-							dash,
-							1+rd.nextFloat());
-				}
-				
-				private Color swapColor()
-				{
-					
-					Color[] colors = new Color[]{
-							Color.BLACK,
-							Color.blue,
-							Color.lightGray,
-							Color.cyan,
-							Color.GRAY,
-							Color.green,
-							Color.MAGENTA,
-							Color.ORANGE,
-							Color.PINK,
-							Color.RED,
-							Color.YELLOW
-					};
-					return colors[rd.nextInt(colors.length)];
-				}
-				
-				@Override
-				public void mouseEntered(MouseEvent e)
-				{
-				
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent e)
-				{
-				
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("cell edited");
 				}
 			});
 		}
-
 		
-		public void paint(Graphics g)
-		{
-			Graphics2D g2d = (Graphics2D) g;
-			ArrayList<Strofoida.Point> points = this.strofoida.GetPoints();
-	
-			g2d.setColor(Color.lightGray);
-			Stroke s = new BasicStroke(0.5f);
-			g2d.setStroke(s);
-			
-			//draw axis
-			Point2D x1 = new Point2D.Double(
-					0,
-					this.getHeight() / 2.0
-			);
-			Point2D x2 = new Point2D.Double(
-					this.getWidth(),
-					this.getHeight()/2.0
-			);
-			g2d.draw(new Line2D.Double(x1, x2));
-	
-			Point2D y1 = new Point2D.Double(
-					this.getWidth() / 2.0,
-					0
-			);
-			Point2D y2 = new Point2D.Double(
-					this.getWidth() / 2.0,
-					this.getHeight()
-			);
-			g2d.draw(new Line2D.Double(y1, y2));
-	
-			g2d.setColor(this.color);
-			g2d.setStroke(this.stroke);
-			
-			
-			//draw plot
-			for (int i = 0; i < points.size() - 2; i++)
-			{
-				Point2D p1 = new Point2D.Double(
-						points.get(i).x * zoom + this.getWidth() / 2.0,
-						points.get(i).y * zoom + this.getHeight() / 2.0
-				);
-				Point2D p2 = new Point2D.Double(
-						points.get(i + 2).x * zoom + this.getWidth() / 2.0,
-						points.get(i + 2).y * zoom + this.getHeight() / 2.0
-				);
-				g2d.draw(new Line2D.Double(p1, p2));
-			}
-			g2d.setColor(Color.BLACK);
-			g2d.setFont(new Font("Calibri", Font.PLAIN, 20));
-			g2d.drawString("Шипка Олена. Варіант 9", 10, 20);
+		public String currSelected() {
+			return "";
 		}
-        
-    
-    }
+	}
+	
 }
