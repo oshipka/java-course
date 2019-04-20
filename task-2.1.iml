@@ -7,6 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="MathParser.org-mXparser-v.4.2.0-jdk.1.8" level="project" />
   </component>
 </module>
-

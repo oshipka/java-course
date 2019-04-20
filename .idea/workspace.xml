@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48bdf5a2-4d3c-4de5-a6f6-94092c1a6881" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/MathParser_org_mXparser_v_4_2_0_jdk_1_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-2.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/task-2.1.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,32 +23,30 @@
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1382142993">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.60" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="1957" />
-          <entry key="md" value="13" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="1957" />
-          <entry key="Markdown" value="13" />
-        </counts>
-      </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="1" />
+          <entry key="MF" value="1" />
+          <entry key="class" value="1" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="1" />
+          <entry key="CLASS" value="1" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="3" />
+          <entry key="Manifest" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="701" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="701" />
         </counts>
       </usages-collector>
     </session>
@@ -57,41 +62,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2348">
-              <caret line="261" column="4" lean-forward="true" selection-start-line="261" selection-start-column="4" selection-end-line="261" selection-end-column="4" />
+            <state relative-caret-position="49">
+              <caret line="235" column="8" lean-forward="true" selection-start-line="235" selection-start-column="8" selection-end-line="235" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2555#2686#0" expanded="true" />
-                <element signature="e#2685#2686#0" expanded="true" />
-                <element signature="e#2763#2894#0" expanded="true" />
-                <element signature="e#2893#2894#0" expanded="true" />
-                <element signature="e#2969#3097#0" expanded="true" />
-                <element signature="e#3096#3097#0" expanded="true" />
-                <element signature="e#3191#3330#0" expanded="true" />
-                <element signature="e#3329#3330#0" expanded="true" />
-                <element signature="e#3403#3544#0" expanded="true" />
-                <element signature="e#3543#3544#0" expanded="true" />
-                <element signature="e#3617#3757#0" expanded="true" />
-                <element signature="e#3756#3757#0" expanded="true" />
-                <element signature="e#4685#4941#0" expanded="true" />
-                <element signature="e#4940#4941#0" expanded="true" />
-                <element signature="e#5054#5251#0" expanded="true" />
-                <element signature="e#5250#5251#0" expanded="true" />
-                <element signature="e#5325#5465#0" expanded="true" />
-                <element signature="e#5464#5465#0" expanded="true" />
-                <element signature="e#5670#5867#0" expanded="true" />
-                <element signature="e#5866#5867#0" expanded="true" />
-                <element signature="method#createStatusBar#0;class#Frame#0" />
-                <element signature="e#6626#6782#0" expanded="true" />
-                <element signature="e#6781#6782#0" expanded="true" />
+                <element signature="class#1421:1755" />
+                <element signature="class#1865:1951" />
+                <element signature="class#2061:2660" />
+                <element signature="method#createToolbar#0;class#Frame#0" />
+                <element signature="e#6525#6721#0" expanded="true" />
+                <element signature="e#6720#6721#0" expanded="true" />
                 <element signature="method#componentMoved#0;class#Frame#0" />
                 <element signature="method#componentShown#0;class#Frame#0" />
                 <element signature="method#componentHidden#0;class#Frame#0" />
-                <element signature="e#7765#7901#0" expanded="true" />
-                <element signature="e#7900#7901#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,20 +86,50 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TableCellListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="56" />
+            <state relative-caret-position="259">
+              <caret line="92" column="52" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1216#1217#0" expanded="true" />
-                <element signature="e#1236#1237#0" expanded="true" />
-                <element signature="e#1355#1356#0" expanded="true" />
-                <element signature="e#1377#1378#0" expanded="true" />
-                <element signature="e#1496#1497#0" expanded="true" />
-                <element signature="e#1518#1519#0" expanded="true" />
-                <element signature="e#1630#1631#0" expanded="true" />
-                <element signature="e#1647#1648#0" expanded="true" />
-                <element signature="e#1789#1790#0" expanded="true" />
-                <element signature="e#1808#1809#0" expanded="true" />
+                <element signature="docComment;method#TableCellListener#0;class#TableCellListener#0" />
+                <element signature="method#TableCellListener#0;class#TableCellListener#0" />
+                <element signature="docComment;method#TableCellListener#1;class#TableCellListener#0" />
+                <element signature="method#TableCellListener#1;class#TableCellListener#0" />
+                <element signature="docComment;method#getColumn#0;class#TableCellListener#0" />
+                <element signature="docComment;method#getNewValue#0;class#TableCellListener#0" />
+                <element signature="docComment;method#getOldValue#0;class#TableCellListener#0" />
+                <element signature="docComment;method#getRow#0;class#TableCellListener#0" />
+                <element signature="docComment;method#getTable#0;class#TableCellListener#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MyTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="126" column="42" selection-start-line="126" selection-start-column="42" selection-end-line="126" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="class#1650:1851" />
+                <element signature="e#1727#1728#0" expanded="true" />
+                <element signature="e#1775#1776#0" expanded="true" />
+                <element signature="class#1878:2227" />
+                <element signature="method#keyTyped#0;class#1847:2193" />
+                <element signature="method#keyPressed#0;class#1847:2073" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding>
+                <element signature="e#137#138#0" expanded="true" />
+                <element signature="e#162#163#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,7 +140,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="220">
-                <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+                <caret line="11" selection-start-line="11" selection-end-line="11" />
               </first_editor>
               <second_editor />
             </state>
@@ -159,7 +175,11 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/TablecellListener.java" />
+        <option value="$PROJECT_DIR$/src/Parser.java" />
+        <option value="$PROJECT_DIR$/task-2.1.iml" />
+        <option value="$PROJECT_DIR$/src/MParser.java" />
         <option value="$PROJECT_DIR$/src/Frame.java" />
+        <option value="$PROJECT_DIR$/src/MyTable.java" />
       </list>
     </option>
   </component>
@@ -177,17 +197,19 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="y" value="1" />
     <option name="width" value="1103" />
     <option name="height" value="1086" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -204,14 +226,18 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555420426775" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555768745685" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jdk.1.9/MathParser.org-mXparser-v.4.2.0-jdk.1.9.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.37816092" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
@@ -257,7 +283,8 @@
       <workItem from="1552852701986" duration="7829000" />
       <workItem from="1552929341001" duration="8594000" />
       <workItem from="1553001225332" duration="2951000" />
-      <workItem from="1555184109882" duration="28216000" />
+      <workItem from="1555184109882" duration="28381000" />
+      <workItem from="1555671254976" duration="23494000" />
     </task>
     <task id="LOCAL-00001" summary="completed the task">
       <created>1552943534194</created>
@@ -270,13 +297,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54378000" />
+    <option name="totallyTimeSpent" value="77648000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="1" width="1103" height="1086" extended-state="0" />
+    <frame x="-7" y="0" width="1103" height="1086" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.496875" visible="true" weight="0.21380633" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.496875" visible="true" weight="0.14669223" />
       <window_info id="Structure" order="1" sideWeight="0.503125" side_tool="true" weight="0.22819315" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -285,17 +312,17 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49922118" visible="true" weight="0.29411766" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4779412" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6922339" weight="0.40756303" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.79098755" visible="true" weight="0.4779412" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5007788" side_tool="true" weight="0.32914045" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.20901246" side_tool="true" visible="true" weight="0.4779412" />
       <window_info anchor="bottom" id="RNConsole" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3277311" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.60690314" weight="0.3277311" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24972856" />
@@ -357,9 +384,33 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Frame.java</url>
-          <line>195</line>
+          <line>181</line>
           <properties />
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../jdk.1.10/MathParser.org-mXparser-v.4.2.0-jdk.1.10.jar!/org/mariuszgromada/math/mxparser/Expression.class</url>
+          <line>1</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MyTable.java</url>
+          <line>107</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MyTable.java</url>
+          <line>127</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MyTable.java</url>
+          <line>125</line>
+          <properties />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -399,43 +450,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strofoida.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-          <folding>
-            <element signature="class#Point#0;class#Strofoida#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TableCellListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1355#1356#0" expanded="true" />
-            <element signature="e#1377#1378#0" expanded="true" />
-            <element signature="e#1496#1497#0" expanded="true" />
-            <element signature="e#1518#1519#0" expanded="true" />
-            <element signature="e#1630#1631#0" expanded="true" />
-            <element signature="e#1647#1648#0" expanded="true" />
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1808#1809#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strofoida.java" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="220">
-            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <caret line="11" selection-start-line="11" selection-end-line="11" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../jdk.1.10/MathParser.org-mXparser-v.4.2.0-jdk.1.10.jar!/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../jdk.1.10/MathParser.org-mXparser-v.4.2.0-jdk.1.10.jar!/org/mariuszgromada/math/mxparser/Expression.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-88095">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task-2.1.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -446,40 +485,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Frame.java">
+    <entry file="file://$PROJECT_DIR$/src/TableCellListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2348">
-          <caret line="261" column="4" lean-forward="true" selection-start-line="261" selection-start-column="4" selection-end-line="261" selection-end-column="4" />
+        <state relative-caret-position="259">
+          <caret line="92" column="52" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2555#2686#0" expanded="true" />
-            <element signature="e#2685#2686#0" expanded="true" />
-            <element signature="e#2763#2894#0" expanded="true" />
-            <element signature="e#2893#2894#0" expanded="true" />
-            <element signature="e#2969#3097#0" expanded="true" />
-            <element signature="e#3096#3097#0" expanded="true" />
-            <element signature="e#3191#3330#0" expanded="true" />
-            <element signature="e#3329#3330#0" expanded="true" />
-            <element signature="e#3403#3544#0" expanded="true" />
-            <element signature="e#3543#3544#0" expanded="true" />
-            <element signature="e#3617#3757#0" expanded="true" />
-            <element signature="e#3756#3757#0" expanded="true" />
-            <element signature="e#4685#4941#0" expanded="true" />
-            <element signature="e#4940#4941#0" expanded="true" />
-            <element signature="e#5054#5251#0" expanded="true" />
-            <element signature="e#5250#5251#0" expanded="true" />
-            <element signature="e#5325#5465#0" expanded="true" />
-            <element signature="e#5464#5465#0" expanded="true" />
-            <element signature="e#5670#5867#0" expanded="true" />
-            <element signature="e#5866#5867#0" expanded="true" />
-            <element signature="method#createStatusBar#0;class#Frame#0" />
-            <element signature="e#6626#6782#0" expanded="true" />
-            <element signature="e#6781#6782#0" expanded="true" />
+            <element signature="docComment;method#TableCellListener#0;class#TableCellListener#0" />
+            <element signature="method#TableCellListener#0;class#TableCellListener#0" />
+            <element signature="docComment;method#TableCellListener#1;class#TableCellListener#0" />
+            <element signature="method#TableCellListener#1;class#TableCellListener#0" />
+            <element signature="docComment;method#getColumn#0;class#TableCellListener#0" />
+            <element signature="docComment;method#getNewValue#0;class#TableCellListener#0" />
+            <element signature="docComment;method#getOldValue#0;class#TableCellListener#0" />
+            <element signature="docComment;method#getRow#0;class#TableCellListener#0" />
+            <element signature="docComment;method#getTable#0;class#TableCellListener#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#137#138#0" expanded="true" />
+            <element signature="e#162#163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="235" column="8" lean-forward="true" selection-start-line="235" selection-start-column="8" selection-end-line="235" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#1421:1755" />
+            <element signature="class#1865:1951" />
+            <element signature="class#2061:2660" />
+            <element signature="method#createToolbar#0;class#Frame#0" />
+            <element signature="e#6525#6721#0" expanded="true" />
+            <element signature="e#6720#6721#0" expanded="true" />
             <element signature="method#componentMoved#0;class#Frame#0" />
             <element signature="method#componentShown#0;class#Frame#0" />
             <element signature="method#componentHidden#0;class#Frame#0" />
-            <element signature="e#7765#7901#0" expanded="true" />
-            <element signature="e#7900#7901#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="126" column="42" selection-start-line="126" selection-start-column="42" selection-end-line="126" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#1650:1851" />
+            <element signature="e#1727#1728#0" expanded="true" />
+            <element signature="e#1775#1776#0" expanded="true" />
+            <element signature="class#1878:2227" />
+            <element signature="method#keyTyped#0;class#1847:2193" />
+            <element signature="method#keyPressed#0;class#1847:2073" />
           </folding>
         </state>
       </provider>
@@ -487,6 +553,66 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>task-2.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>11</last-edited>
@@ -494,6 +620,18 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>json-simple-1.1.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.37816092" />
               </list>
             </option>
           </splitter-proportions>

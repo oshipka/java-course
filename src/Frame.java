@@ -1,31 +1,20 @@
-import com.sun.org.apache.bcel.internal.generic.ObjectType;
-
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/** @noinspection deprecation*/
 public class Frame extends JFrame implements ComponentListener {
-	private int prevWidth;
-	private int prevHeight;
-	
-	private JMenu menu;
-	private JMenuItem i1, i2, i3;
 	
 	private MyTable table;
 	
@@ -34,28 +23,25 @@ public class Frame extends JFrame implements ComponentListener {
 	//private double zoom = 20;
 	
 	Frame() {
-		super("Строфоїда");
-		
+		super("Exel 2.0");
 		
 		contentPane.addComponentListener(this);
-		
 		
 		createMenu();
 		table = new MyTable(contentPane);
 		createToolbar();
 		createStatusBar();
 		
-		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setSize(500, 570);
+		setSize(500, 600);
 	}
 	
 	
 	private void createMenu() {
 		JMenuBar mb = new JMenuBar();
-		menu = new JMenu("File");
-		i1 = new JMenuItem(new AbstractAction("New") {
+		JMenu menu = new JMenu("File");
+		JMenuItem i1 = new JMenuItem(new AbstractAction("New") {
 			public void actionPerformed(ActionEvent ae) {
 				table.model.setRowCount(1);
 				table.model.setColumnCount(1);
@@ -69,13 +55,13 @@ public class Frame extends JFrame implements ComponentListener {
 			}
 		});
 		i1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
-		i2 = new JMenuItem(new AbstractAction("Save") {
+		JMenuItem i2 = new JMenuItem(new AbstractAction("Save") {
 			public void actionPerformed(ActionEvent ae) {
 			
 			}
 		});
 		i2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
-		i3 = new JMenuItem(new AbstractAction("Open") {
+		JMenuItem i3 = new JMenuItem(new AbstractAction("Open") {
 			public void actionPerformed(ActionEvent ae) {
 				JFileChooser fc = new JFileChooser();
 				int i = fc.showOpenDialog(contentPane);
@@ -84,7 +70,7 @@ public class Frame extends JFrame implements ComponentListener {
 					String filepath = f.getPath();
 					try {
 						BufferedReader br = new BufferedReader(new FileReader(filepath));
-						String s1 = "", s2 = "";
+						String s1, s2 = "";
 						while ((s1 = br.readLine()) != null) {
 							s2 += s1 + "\n";
 						}
@@ -252,6 +238,7 @@ public class Frame extends JFrame implements ComponentListener {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				status.setText("row:" + table.table.getSelectedRow() + "column: " + table.table.getSelectedColumn());
+				table.tf.setText(table.currSelectedContent());
 			}
 		});
 	}
@@ -276,46 +263,5 @@ public class Frame extends JFrame implements ComponentListener {
 	}
 	
 	
-	class MyTable extends JTable {
-		
-		JScrollPane sp;
-		JTable table = new JTable();
-		DefaultTableModel model;
-		TextField tf = new TextField();
-		
-		MyTable(Container container) {
-			
-			model = (DefaultTableModel) table.getModel();
-			
-			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-			for (int i = 0; i < 5; i++) {
-				model.addColumn(table.getColumnCount());
-			}
-			for (int i = 0; i < 10; i++) {
-				model.addRow(new Object[]{i});
-			}
-			sp = new JScrollPane(table);
-			sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-			sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-			
-			JPanel jp = new JPanel();
-			jp.setLayout(new BorderLayout());
-			jp.add(tf, BorderLayout.NORTH);
-			jp.add(sp, BorderLayout.CENTER);
-			container.add(jp, BorderLayout.CENTER);
-			new TableCellListener(table, new AbstractAction() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					System.out.println("cell edited");
-				}
-			});
-		}
-		
-		public String currSelectedContent() {
-			int row = table.getSelectedRow();
-			int column = table.getSelectedColumn();
-			return (String) table.getValueAt(row, column);
-		}
-	}
 	
 }
