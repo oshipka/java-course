@@ -15,7 +15,9 @@ public class Frame extends JFrame implements ComponentListener {
 private Color color;
 private Stroke str;
 private Random rd = new Random();
-	private JPanel canvas;
+	private JPanel canvas1;
+	private JPanel canvas2;
+	private JPanel canvas3;
 	
 	private int prevWidth;
 	private int prevHeight;
@@ -33,9 +35,20 @@ private Random rd = new Random();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Container drawable = getContentPane();
+		drawable.setBackground(Color.lightGray);
 		str = new BasicStroke(2f);
-		canvas = new Canvas(strofoida, width, height, color, str, this);
-		drawable.add(canvas);
+		//canvas = new Canvas(strofoida, width, height, color, str, this);
+		canvas1 = new JPanel();
+		canvas2 = new JPanel();
+		canvas3 = new JPanel();
+		drawable.setLayout(new GridLayout(0, 3, 2, 1));
+		drawable.add(canvas1);
+		drawable.add(canvas2);
+		drawable.add(canvas3);
+		
+		WormThread wt = new WormThread((Graphics2D) canvas1.getGraphics());
+		new Thread(wt).start();
+		
 		setSize(width, height);
 	}
 	@Override
