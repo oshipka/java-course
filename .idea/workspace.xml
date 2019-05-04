@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48bdf5a2-4d3c-4de5-a6f6-94092c1a6881" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TableCellListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TableCellListener.java" afterDir="false" />
-    </list>
+    <list default="true" id="48bdf5a2-4d3c-4de5-a6f6-94092c1a6881" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MyTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="147" column="12" selection-start-line="147" selection-start-column="12" selection-end-line="147" selection-end-column="12" />
+            <state relative-caret-position="340">
+              <caret line="149" column="50" selection-start-line="149" selection-start-column="50" selection-end-line="149" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -231,7 +225,7 @@
       <workItem from="1555184109882" duration="28381000" />
       <workItem from="1555671254976" duration="23494000" />
       <workItem from="1556882521203" duration="11719000" />
-      <workItem from="1556962096777" duration="11410000" />
+      <workItem from="1556962096777" duration="12080000" />
     </task>
     <task id="LOCAL-00001" summary="completed the task">
       <created>1552943534194</created>
@@ -244,7 +238,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100777000" />
+    <option name="totallyTimeSpent" value="101447000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="0" width="1589" height="1086" extended-state="0" />
@@ -259,7 +253,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.80444735" visible="true" weight="0.41238195" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.80444735" weight="0.41238195" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7861347" weight="0.6505771" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -334,7 +328,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/MyTable.java</url>
-          <line>214</line>
+          <line>221</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
@@ -462,8 +456,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="147" column="12" selection-start-line="147" selection-start-column="12" selection-end-line="147" selection-end-column="12" />
+        <state relative-caret-position="340">
+          <caret line="149" column="50" selection-start-line="149" selection-start-column="50" selection-end-line="149" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
