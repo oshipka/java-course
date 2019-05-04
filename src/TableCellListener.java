@@ -128,7 +128,7 @@ public class TableCellListener implements PropertyChangeListener, Runnable {
 	 *	Update the Cell history when necessary
 	 */
 	private void processEditingStopped() {
-		newValue = table.getModel().getValueAt(row, column);
+		/*newValue = table.getModel().getValueAt(row, column);
 		
 		//  The data has changed, invoke the supplied Action
 		
@@ -145,6 +145,6 @@ public class TableCellListener implements PropertyChangeListener, Runnable {
 					""
 			);
 			action.actionPerformed(event);
-		}
+		}*/
 	}
 }
