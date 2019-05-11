@@ -1,235 +1,131 @@
+import animations.ClockAnimation;
+import animations.FloatingRectangleAnimation;
+import animations.IAnimation;
+import animations.WormAnimation;
+
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
+import java.awt.event.*;
 import java.util.Random;
 
-import static java.awt.BasicStroke.*;
-
-public class Frame extends JFrame implements ComponentListener {
+public class Frame extends JFrame {
 private Color color;
 private Stroke str;
 private Random rd = new Random();
-	private JPanel canvas1;
-	private JPanel canvas2;
-	private JPanel canvas3;
+
+	private static final int WIDTH = 1000;
+	private static final int HEIGHT = 800;
+	private static final int DEFAULT_FRAME_RATE = 30;
 	
-	private int prevWidth;
-	private int prevHeight;
-	
-	private double zoom = 20;
-	Frame(double a, double minX, double maxX) {
-		super("Строфоїда");
-
-		Strofoida strofoida = new Strofoida(a, minX, maxX);
-		int width =(int) (strofoida.deltaX()*zoom*2);
-		int height =(int) (strofoida.deltaY()*zoom);
-
-		getContentPane().addComponentListener(this);
-
+	Frame() {
+		super("Task 4 - OShipka");
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		Container drawable = getContentPane();
-		drawable.setBackground(Color.lightGray);
+		
+		this.setLayout(new GridLayout(1, 3, 5, 5));
+		
+		IAnimation[] animations = new IAnimation[] {
+				new WormAnimation(DEFAULT_FRAME_RATE),
+				new ClockAnimation(DEFAULT_FRAME_RATE),
+				new FloatingRectangleAnimation(DEFAULT_FRAME_RATE)
+		};
+		
+		this.setBackground(Color.lightGray);
 		str = new BasicStroke(2f);
-		//canvas = new Canvas(strofoida, width, height, color, str, this);
-		canvas1 = new JPanel();
-		canvas2 = new JPanel();
-		canvas3 = new JPanel();
-		drawable.setLayout(new GridLayout(0, 3, 2, 1));
-		drawable.add(canvas1);
-		drawable.add(canvas2);
-		drawable.add(canvas3);
 		
-		WormThread wt = new WormThread((Graphics2D) canvas1.getGraphics());
-		new Thread(wt).start();
-		
-		setSize(width, height);
-	}
-	@Override
-	public void componentResized(ComponentEvent e) {
-		
-		double longerDelta = getDelta(this.getWidth(), (prevWidth*1.0), this.getHeight(), (prevHeight*1.0));
-		
-		zoom *= longerDelta;
-		System.out.println("Zoom: " + zoom);
-		
-		prevHeight = this.getHeight();
-		prevWidth = this.getWidth();
-		
-	}
-	
-	private double getDelta(int width, double v, int height, double v1)
-	{
-		double longer = Math.max(Math.abs(width-v), Math.abs(height-v1));
-		if (longer == Math.abs(width-v))
-		{
-			return width/v;
+		for (int i = 0; i < animations.length; i++) {
+			this.add(this.getThreadView(i, animations[i], WIDTH / animations.length + 1, HEIGHT, i % 2 != 0));
 		}
-		else
-			return height/v1;
-	}
-	
-	@Override
-	public void componentMoved(ComponentEvent e) {
-
-	}
-
-	@Override
-	public void componentShown(ComponentEvent e) {
-
-	}
-
-	@Override
-	public void componentHidden(ComponentEvent e) {
-
-	}
-	
-	public class Canvas extends JPanel {
-		private Strofoida strofoida;
-		Stroke stroke;
-		Color color;
-  
 		
-		Canvas(Strofoida _strofoida, int _width, int _height, Color _c, Stroke _s, final JFrame parent) {
-			super();
-			strofoida = _strofoida;
-			this.setSize(_width, _height);
-			stroke = _s;
-			color = _c;
-			prevHeight = _height;
-			prevWidth = _width;
-			this.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseClicked(MouseEvent e)
-				{
-					SwingUtilities.updateComponentTreeUI(parent);
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e)
-				{
-					color = swapColor();
-				}
-				
-				@Override
-				public void mouseReleased(MouseEvent e)
-				{
-					stroke = swapStroke();
-				}
-				
-				private Stroke swapStroke()
-				{
-					int[] caps = new int[]{CAP_BUTT, CAP_ROUND,	CAP_SQUARE};
-					int[] joins = new int[]{JOIN_BEVEL, JOIN_MITER, JOIN_ROUND};
-					
-					int size = 1+ rd.nextInt(5);
-					float[] dash = new float[size];
-					for (int i = 0; i< size; i++)
-					{
-						dash[i] = 1 + rd.nextFloat();
-					}
-					
-					return new BasicStroke(
-							rd.nextInt(10)+rd.nextFloat(),
-							caps[rd.nextInt(caps.length)],
-							joins[rd.nextInt(joins.length)],
-							1 + rd.nextFloat() * 4,
-							dash,
-							1+rd.nextFloat());
-				}
-				
-				private Color swapColor()
-				{
-					
-					Color[] colors = new Color[]{
-							Color.BLACK,
-							Color.blue,
-							Color.lightGray,
-							Color.cyan,
-							Color.GRAY,
-							Color.green,
-							Color.MAGENTA,
-							Color.ORANGE,
-							Color.PINK,
-							Color.RED,
-							Color.YELLOW
-					};
-					return colors[rd.nextInt(colors.length)];
-				}
-				
-				@Override
-				public void mouseEntered(MouseEvent e)
-				{
-				
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent e)
-				{
-				
-				}
-			});
+		setSize(WIDTH, HEIGHT);
+		this.setMinimumSize(new Dimension(WIDTH, HEIGHT));
+	}
+	
+	private JPanel getThreadView(final int pos, final IAnimation animation, int width, int height, boolean setBorder) {
+		JPanel view = new JPanel();
+		view.setLayout(new BorderLayout());
+		view.setSize(width, height);
+		if (setBorder) {
+			view.setBorder(BorderFactory.createLineBorder(Color.darkGray));
 		}
-
+		((JPanel)animation).setSize(width, height - 100);
+		view.add((JPanel)animation, BorderLayout.CENTER);
 		
-		public void paint(Graphics g)
-		{
-			Graphics2D g2d = (Graphics2D) g;
-			ArrayList<Strofoida.Point> points = this.strofoida.GetPoints();
-	
-			g2d.setColor(Color.lightGray);
-			Stroke s = new BasicStroke(0.5f);
-			g2d.setStroke(s);
-			
-			//draw axis
-			Point2D x1 = new Point2D.Double(
-					0,
-					this.getHeight() / 2.0
-			);
-			Point2D x2 = new Point2D.Double(
-					this.getWidth(),
-					this.getHeight()/2.0
-			);
-			g2d.draw(new Line2D.Double(x1, x2));
-	
-			Point2D y1 = new Point2D.Double(
-					this.getWidth() / 2.0,
-					0
-			);
-			Point2D y2 = new Point2D.Double(
-					this.getWidth() / 2.0,
-					this.getHeight()
-			);
-			g2d.draw(new Line2D.Double(y1, y2));
-	
-			g2d.setColor(this.color);
-			g2d.setStroke(this.stroke);
-			
-			
-			//draw plot
-			for (int i = 0; i < points.size() - 2; i++)
-			{
-				Point2D p1 = new Point2D.Double(
-						points.get(i).x * zoom + this.getWidth() / 2.0,
-						points.get(i).y * zoom + this.getHeight() / 2.0
-				);
-				Point2D p2 = new Point2D.Double(
-						points.get(i + 2).x * zoom + this.getWidth() / 2.0,
-						points.get(i + 2).y * zoom + this.getHeight() / 2.0
-				);
-				g2d.draw(new Line2D.Double(p1, p2));
+		final JButton resume = new JButton("Resume");
+		resume.setEnabled(false);
+		final JButton pause = new JButton("Pause");
+		resume.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				animation.resume();
+				resume.setEnabled(false);
+				pause.setEnabled(true);
 			}
-			g2d.setColor(Color.BLACK);
-			g2d.setFont(new Font("Calibri", Font.PLAIN, 20));
-			g2d.drawString("Шипка Олена. Варіант 9", 10, 20);
-		}
-        
-    
-    }
+		});
+		pause.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				animation.pause();
+				pause.setEnabled(false);
+				resume.setEnabled(true);
+			}
+		});
+		
+		final JTextField frameRate = new JTextField();
+		frameRate.setColumns(10);
+		frameRate.setText(Integer.toString(DEFAULT_FRAME_RATE));
+		frameRate.getDocument().addDocumentListener(new DocumentListener() {
+			
+			private final Border _emptyBorder = BorderFactory.createLineBorder(Color.WHITE);
+			private final Border _errorBorder = BorderFactory.createLineBorder(Color.RED);
+			
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				this.readRate();
+			}
+			
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				this.readRate();
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				this.readRate();
+			}
+			
+			private void readRate() {
+				String text = frameRate.getText().trim().replaceFirst("^0+(?!$)", "");
+				if (text.length() == 0) {
+					text = "0";
+				}
+				if (text.matches("[0-9]+")) {
+					int rate = Integer.parseInt(text);
+					animation.setFrameRate(rate);
+					frameRate.setBorder(this._emptyBorder);
+				} else {
+					frameRate.setBorder(this._errorBorder);
+				}
+			}
+		});
+		JLabel frameLabel = new JLabel("Frame rate:");
+		
+		JPanel framePanel = new JPanel();
+		framePanel.add(frameLabel, BorderLayout.NORTH);
+		framePanel.add(frameRate, BorderLayout.CENTER);
+		
+		JPanel inputs = new JPanel();
+		inputs.setLayout(new GridLayout(3, 1));
+		inputs.add(framePanel);
+		inputs.add(resume);
+		inputs.add(pause);
+		
+		view.add(inputs, BorderLayout.NORTH);
+		
+		animation.start();
+		return view;
+	}
 }

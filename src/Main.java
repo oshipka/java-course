@@ -2,7 +2,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        Frame plot = new Frame(3, -3, 2);
+        Frame plot = new Frame();
         plot.setVisible(true);
     }
 }
